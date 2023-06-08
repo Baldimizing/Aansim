@@ -4,6 +4,9 @@ const port = 3000;
 
 const app = express();
 
+// json 파싱 미들웨어
+app.use(express.json());
+
 const userSchema = new mongoose.Schema({
     email: String,
     password: String,
@@ -16,12 +19,16 @@ module.exports = User;
 mongoose.connect('mongodb://localhost/aansim-db', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+}).then(() => {
+    console.log('MongoDB 연결 성공');
+}).catch((err) => {
+    console.error('MongoDB 연결 실패', err);
 });
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Connection error:'));
 db.once('open', () => {
-    console.log('Connected to MongoDB');
+    console.log('MongoDB 연결 성공');
 });
 
 // 라우트 설정
