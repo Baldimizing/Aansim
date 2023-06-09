@@ -1,20 +1,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const port = 3000;
+const bcrypt = require('bcrypt');
+const userRoutes = require('./routes/userRoutes');
+const HttpStatus = require('http-status-codes');
+const User = require('./models/user');
 
+const port = 3000;
 const app = express();
 
 // json 파싱 미들웨어
 app.use(express.json());
 
-const userSchema = new mongoose.Schema({
-    email: String,
-    password: String,
-});
-
-const User = mongoose.model('User', userSchema);
-
-module.exports = User;
 
 mongoose.connect('mongodb://localhost/aansim-db', {
     useNewUrlParser: true,
@@ -32,9 +28,14 @@ db.once('open', () => {
 });
 
 // 라우트 설정
-const userRoutes = require('./routes/userRoutes');
 app.use('/users', userRoutes);
 
+// 미들웨어 에러 핸들링
+app.use((err, req, res, next) => {
+    console.error(err);
+    res.status(HttpStatus.INTERNAL_SERVER_ERROR).json( {message: 'Internal Server Error'});
+    next(err); // 다음 미들웨어로 에러 전달
+})
 // 서버 시작
 app.listen(3000, () => {
     console.log(`Server started on port ${port}`);
