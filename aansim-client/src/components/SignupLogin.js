@@ -13,9 +13,8 @@ const SignupLogin = () => {
     e.preventDefault();
     if (isSignUp) {
       handleSignup();
-    } else {
-      handleLogin();
     }
+    handleLogin();
   };
 
   const handleUsernameChange = (event) => {
@@ -36,6 +35,7 @@ const SignupLogin = () => {
 
   let buttonText = '로그인';
   let toggleText = '계정이 없으신가요?';
+
   if (isSignUp) {
     buttonText = '회원가입';
     toggleText = '이미 계정이 있으신가요?';
@@ -50,7 +50,7 @@ const SignupLogin = () => {
           <input type="text" value={username} onChange={handleUsernameChange} />
         </label>
         <label>
-          password:
+          Password:
           <input type="password" value={password} onChange={handlePasswordChange} />
         </label>
         <button type="submit">{buttonText}</button>
