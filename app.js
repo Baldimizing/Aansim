@@ -39,11 +39,11 @@ app.use((err, req, res, next) => {
 
 // '/api/signup' 라우터
 const signupRouter = require('./api/signup');
-app.user('/api/signup', signupRouter);
+app.use('/api/signup', signupRouter);
 
 // '/api/login' 라우터
 const loginRouter = require('./api/login');
-app.user('/api/login', loginRouter);
+app.use('/api/login', loginRouter);
 
 // 서버 시작
 app.listen(3000, () => {
