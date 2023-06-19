@@ -36,6 +36,15 @@ app.use((err, req, res, next) => {
     res.status(HttpStatus.INTERNAL_SERVER_ERROR).json( {message: 'Internal Server Error'});
     next(err); // 다음 미들웨어로 에러 전달
 })
+
+// '/api/signup' 라우터
+const signupRouter = require('./api/signup');
+app.user('/api/signup', signupRouter);
+
+// '/api/login' 라우터
+const loginRouter = require('./api/login');
+app.user('/api/login', loginRouter);
+
 // 서버 시작
 app.listen(3000, () => {
     console.log(`Server started on port ${port}`);
