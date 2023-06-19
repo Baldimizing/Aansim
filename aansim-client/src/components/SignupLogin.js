@@ -1,16 +1,21 @@
+import axios from 'axios';
+import { response } from 'express';
 import React, { useState } from 'react';
 
 const SignupLogin = () => {
   const [isSignUp, setIsSignUp] = useState(true);
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
+  const [message, setMessage] = userState('');
 
   const handleToggle = () => {
     setIsSignUp(prevState => !prevState);
+    setMessage('');
   };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+
     if (isSignUp) {
       handleSignup();
     }
@@ -19,18 +24,34 @@ const SignupLogin = () => {
 
   const handleUsernameChange = (event) => {
     setUserName(event.target.value);
+    setMessage('');
   };
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
+    setMessage('');
   };
 
   const handleSignup = () => {
     // 회원가입 처리
+    axios.post('/api/signup', { username, password })
+    .then(response => {
+        setMessage('회원가입에 성공하였습니다.');
+    })
+    .catch(error => {
+        setMessage('회원가입에 실패하였습니다.');
+    });
   };
 
   const handleLogin = () => {
     // 로그인 처리
+    axios.post('/api/login', { username, password })
+    .then(response => {
+        setMessage('로그인에 성공하였습니다.');
+    })
+    .catch(error => {
+        setMessage('로그인에 실패하였습니다.');
+    });
   };
 
   let buttonText = '로그인';
