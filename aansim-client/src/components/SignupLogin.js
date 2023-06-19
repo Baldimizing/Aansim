@@ -1,15 +1,14 @@
 import axios from 'axios';
-import { response } from 'express';
 import React, { useState } from 'react';
 
 const SignupLogin = () => {
   const [isSignUp, setIsSignUp] = useState(true);
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
-  const [message, setMessage] = userState('');
+  const [message, setMessage] = useState('');
 
   const handleToggle = () => {
-    setIsSignUp(prevState => !prevState);
+    setIsSignUp((prevState) => !prevState);
     setMessage('');
   };
 
