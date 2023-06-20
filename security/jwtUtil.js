@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const jwt = require('jsonwebtoken');
 
 const generateToken = (userId) => {
@@ -14,4 +16,7 @@ const verifyToken = (token) => {
     }
 };
 
-module.exports = { generateToken, verifyToken };
+module.exports = { 
+    generateToken, 
+    verifyToken,
+ };
