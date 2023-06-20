@@ -2,7 +2,7 @@ const winston = require('winston');
 
 const logger = winston.createLogger({
     level: 'info',
-    format: winston.format.json(),
+    format: this.format.combine(format.timestamp(), format.json()),
     defaultMeta: { service: 'aansim ' },
     transports: [
         new winston.transports.File({ filename: 'error.log', level: 'error' }),
