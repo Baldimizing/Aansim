@@ -4,6 +4,8 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const { StatusCodes } = require('http-status-codes');
+const { validationResult } = require('express-validator');
+const { generateToken } = require('../')
 
 // 로그인 라우터
 router.post('/', async (req, res) => {
