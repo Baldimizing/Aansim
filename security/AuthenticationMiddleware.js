@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const { StatusCodes } = require('http-status-codes');
-const config = require('./config');
+const config = require('../config');
 
 function authenticateToken(req, res, next) {
     const authHeader = req.headers.authorization;
