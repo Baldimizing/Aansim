@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const userRoutes = require('./routes/userRoutes');
-const HttpStatus = require('http-status-codes');
+const { HttpStatus } = require('http-status-codes');
 const User = require('./models/user');
 
 const port = 3000;
@@ -28,7 +28,7 @@ db.once('open', () => {
 });
 
 // 라우트 설정
-app.use('/users', userRoutes);
+app.use('/api', userRoutes);
 
 // 미들웨어 에러 핸들링
 app.use((err, req, res, next) => {

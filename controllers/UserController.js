@@ -1,5 +1,5 @@
 const User = require('../models/user');
-const StatusCodes = require('http-status-codes');
+const { StatusCodes } = require('http-status-codes');
 const bcrypt = require('bcrypt');
 
 // 회원가입
