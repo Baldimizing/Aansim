@@ -102,11 +102,13 @@ function App() {
       <div className="quiz">
         <h2>착한 사람 퀴즈</h2>
         <p>{currentQuestion}</p>
+        <div className="choices">
         {choices.map((choice, index) => (
           <button key={index} onClick={() => handleChoice(choice)}>
             {choice.text}
           </button>
-        ))}
+    ))}
+        </div>
       </div>
       <div className="score">Score: {score}</div>
     </div>
