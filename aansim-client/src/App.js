@@ -85,7 +85,7 @@ function App() {
           <h1>안심하고 거래하세요</h1>
         </header>
         <div className="signup-login">
-          <SignupLogin />
+          <SignupLogin/>
         </div>
       </div>
     );
@@ -102,7 +102,7 @@ function App() {
       <div className="quiz">
         <h2>착한 사람 퀴즈</h2>
         <p>{currentQuestion}</p>
-        <div className="choices">
+        <div className="choices" style={{ flexDirection: 'column' }}>
         {choices.map((choice, index) => (
           <button key={index} onClick={() => handleChoice(choice)}>
             {choice.text}
