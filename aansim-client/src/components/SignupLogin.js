@@ -1,12 +1,23 @@
+// aansim-client/components/SignupLogin.js
 import axios from 'axios';
 import React, { useState } from 'react';
 
-const SignupLogin = () => {
+const SignupLogin = (score) => {
   const [isSignUp, setIsSignUp] = useState(true);
-  const [username, setUserName] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const [idProof, setIdProof] = useState(null);
 
+  // score 받기
+  const handleScoreChange = (event) => {
+    setScore(event.target.value);
+  };
+
+  // iD Proof 받기
+  const handleIdProofChange = (event) => {
+    setIdProof(event.target.files[0]);
+  };
   const handleToggle = () => {
     setIsSignUp((prevState) => !prevState);
     setMessage('');
@@ -17,12 +28,13 @@ const SignupLogin = () => {
 
     if (isSignUp) {
       handleSignup();
+    } else {
+      handleLogin();
     }
-    handleLogin();
   };
 
   const handleUsernameChange = (event) => {
-    setUserName(event.target.value);
+    setUsername(event.target.value);
     setMessage('');
   };
 
@@ -31,26 +43,39 @@ const SignupLogin = () => {
     setMessage('');
   };
 
-  const handleSignup = () => {
+  const handleSignup = ( score ) => {
+
+    if (score < 0) {
+      setMessage('[안내] 착한 점수가 부족하면 회원가입이 불가합니다. 안녕히 가십시오.');
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('username', username);
+    formData.append('password', password);
+    formData.append('score', score)
+
     // 회원가입 처리
-    axios.post('/api/signup', { username, password })
-    .then(response => {
+    axios
+      .post('/api/signup', formData)
+      .then((response) => {
         setMessage('회원가입에 성공하였습니다.');
-    })
-    .catch(error => {
+      })
+      .catch((error) => {
         setMessage('회원가입에 실패하였습니다.');
-    });
+      });
   };
 
   const handleLogin = () => {
     // 로그인 처리
-    axios.post('/api/login', { username, password })
-    .then(response => {
+    axios
+      .post('/api/login', { username, password })
+      .then((response) => {
         setMessage('로그인에 성공하였습니다.');
-    })
-    .catch(error => {
+      })
+      .catch((error) => {
         setMessage('로그인에 실패하였습니다.');
-    });
+      });
   };
 
   let buttonText = '로그인';
@@ -73,6 +98,12 @@ const SignupLogin = () => {
           Password:
           <input type="password" value={password} onChange={handlePasswordChange} />
         </label>
+        {isSignUp && (
+          <label>
+            Quiz score:
+            <input type="number" value={score} readOnly />
+          </label>
+        )}
         <button type="submit">{buttonText}</button>
       </form>
       <p>
@@ -81,6 +112,7 @@ const SignupLogin = () => {
           {isSignUp ? '로그인으로 전환' : '회원가입으로 전환'}
         </button>
       </p>
+      {message && <p>{message}</p>}
     </div>
   );
 };
