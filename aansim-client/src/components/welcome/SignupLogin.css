@@ -1,0 +1,40 @@
+.signup-login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  .input-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+  
+  .input-field label {
+    margin-bottom: 0.5rem;
+  }
+  
+  .input-field input {
+    padding: 0.5rem;
+  }
+  
+  .submit {
+    margin-top: 1rem;
+  }
+  
+  .toggle {
+    margin-bottom: 2rem;
+  }
+  
+  .social-login {
+    text-align: center;
+  }
+  
