@@ -60,8 +60,8 @@ html, body {
   }
   
   .welcome-body {
-    font-size: 1.8em; /* Change the font-size as required */
-    color: #abb0b0; /* Change the color as required */
+    font-size: 1.8em; 
+    color: #abb0b0;
     margin-bottom: 10px; 
     position: relative;
     top: 50px;
@@ -82,7 +82,7 @@ html, body {
     line-height: 1.5;
     width: 150vw; 
     height: 15vh;
-    color: rgb(12, 12, 12); /* Change this to adjust the color of the text */
-    padding: 10px; /* Adjust the padding as needed */
+    color: rgb(12, 12, 12); 
+    padding: 10px;
   }
   

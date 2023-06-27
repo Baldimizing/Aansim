@@ -22,13 +22,9 @@ function App() {
 
   return (
     <div className="app">
-      <header>
-        <h1>안심하고 거래하세요</h1>
-      </header>
       {page === 'welcome' && <Welcome onStart={startQuiz} />}
       {page === 'quiz' && <Quiz onQuizEnd={showLogin} />}
-      {page === 'login' && <SignupLogin score={score} setScore={setScore} isSignUp={isSignUp} setIsSignUp={setIsSignUp} />
-}
+      {page === 'login' && <SignupLogin score={score} setScore={setScore} isSignUp={isSignUp} setIsSignUp={setIsSignUp} />}
     </div>
   );
 }
