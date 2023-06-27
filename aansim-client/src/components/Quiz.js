@@ -68,7 +68,7 @@ const quizData = [
 
   function Quiz() {
     const [currentQuiz, setCurrentQuiz] = useState(0);
-    const [score, setScore] = userState(0);
+    const [score, setScore] = useState(0);
 
     const handleChoice = (choice) => {
         const choiceScore = choice.score || 0;
