@@ -2,17 +2,12 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 
-const SignupLogin = (score) => {
+const SignupLogin = ({score, setScore}) => {
   const [isSignUp, setIsSignUp] = useState(true);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   const [idProof, setIdProof] = useState(null);
-
-  // score 받기
-  const handleScoreChange = (event) => {
-    setScore(event.target.value);
-  };
 
   // iD Proof 받기
   const handleIdProofChange = (event) => {
@@ -28,9 +23,8 @@ const SignupLogin = (score) => {
 
     if (isSignUp) {
       handleSignup();
-    } else {
-      handleLogin();
-    }
+    } 
+    handleLogin();
   };
 
   const handleUsernameChange = (event) => {
@@ -46,7 +40,7 @@ const SignupLogin = (score) => {
   const handleSignup = ( score ) => {
 
     if (score < 0) {
-      setMessage('[안내] 착한 점수가 부족하면 회원가입이 불가합니다. 안녕히 가십시오.');
+      setMessage('[안내] 착함 점수가 부족하면 회원가입이 불가합니다. 안녕히 가십시오.');
       return;
     }
 
@@ -100,7 +94,7 @@ const SignupLogin = (score) => {
         </label>
         {isSignUp && (
           <label>
-            Quiz score:
+            점수 :
             <input type="number" value={score} readOnly />
           </label>
         )}
