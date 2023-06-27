@@ -78,7 +78,10 @@ const quizData = [
 
     // 퀴즈를 모두 푼 경우
     if (currentQuiz >= quizData.length) {
-        return <div> 착함 점수: {score} </div> 
+        return <div className='quizData'> 
+        내 안심 지수 결과는? {score} 
+        <p>(지수가 0 미만인 경우 안심 이용이 불가합니다.)</p>
+        </div> 
     }
 
     const currentQuestion = quizData[currentQuiz].question;
@@ -86,8 +89,12 @@ const quizData = [
 
     return (
         <div className='quiz'>
-            <h2>착한 사람 퀴즈</h2>
-            <p>{currentQuestion}</p>
+            <div className='quiz_header'>
+                <h2>터치로 선택해주세요</h2>
+            </div>
+            <div className='quiz_body'>
+                {currentQuestion}
+            </div>
             <div className='choice-list'>
                 {choices.map((choice, index) => (
                     <button
