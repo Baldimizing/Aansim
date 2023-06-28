@@ -8,8 +8,8 @@ const TIMELOG_MONTHS = 5;
 
 function Profile({ score }) {
     const [userType, setUserType] = useState('');
+    const [userName, setUserName] = useState('');
     const [introduction, setIntroduction] = useState('');
-    const [photo, setPhoto] = useState(null);
     const [timeLogs, setTimeLogs] = useState(Array(TIMELOG_MONTHS).fill(''));
     const [safetyScore, setSafetyScore] = useState(score);
     const [isLoading, setIsLoading] = useState(false); // 로딩 상태
@@ -23,11 +23,16 @@ function Profile({ score }) {
       timer = setTimeout(() => {
         setIsLoading(false); // 로딩 상태를 false로 변경
         navigate('/mainPage'); // mainPage로 이동
-      }, 5800); // 3초 후에 작동
+      }, 5800); 
     }
     return () => clearTimeout(timer); // 컴포넌트가 언마운트되거나 업데이트되면 타이머를 제거
   }, [isLoading, navigate]); // isLoading 또는 navigate가 변경될 때마다 이 훅을 실행
 
+  // 닉네임 변경 핸들러 추가
+  const handleUserNameChange = (e) => {
+    setUserName(e.target.value);
+    };
+    
   const handleUserTypeChange = (e) => {
     setUserType(e.target.value);
   };
@@ -38,10 +43,6 @@ function Profile({ score }) {
     }
   };
 
-  const handlePhotoChange = (e) => {
-    setPhoto(e.target.files[0]);
-  };
-
   const handleTimeLogChange = (index) => (e) => {
     const newTimeLogs = [...timeLogs];
     newTimeLogs[index] = e.target.value;
@@ -49,28 +50,11 @@ function Profile({ score }) {
   };
 
   const onFileChange = async (e) => { // 파일 선택 핸들러
-    setPhoto(e.target.files[0]);
-    setMessage('');
-
-    setIsLoading(true);
-    setMessage('사진 업로드 중...');
-    await delay(3100);
-
-    setMessage('얼굴 인식 중...');
-    await delay(3100);
-
     setIsLoading(false);
-    setMessage('얼굴 인식 완료! 안심할 수 있습니다.');
-  };
-
-  const onFileUpload = () => { // 파일 업로드 핸들러
     setIsLoading(true);
-    setMessage('사진 업로드 중...');
     setTimeout(() => {
-      setMessage('얼굴 인식 중...');
       setTimeout(() => {
         setIsLoading(false);
-        setMessage('얼굴 인식 완료! 안심할 수 있습니다.');
       }, 3500);
     }, 3500);
   };
@@ -79,6 +63,16 @@ function Profile({ score }) {
     <div style={{ overflowY: 'auto', minHeight: '100vh' }}>
         <div className='header'>
             <h1>Profile</h1>
+        </div>
+        {/* 닉네임 입력 */}
+        <div className='user_name'>
+            <h2>회원명 입력</h2>
+            <input
+            type="text"
+            value={userName}
+            onChange={handleUserNameChange}
+            placeholder="회원명을 입력해주세요"
+            />
         </div>
         {/* 회원 유형 선택 */}
         <div className='user_type'>
@@ -130,8 +124,7 @@ function Profile({ score }) {
         <div className='id_card'>
             <h2>신분증 촬영</h2>
             <p> 신분증을 촬영하여 등록해주세요 </p>
-            <input type="file" onChange={onFileChange} /> {/* 수정된 부분 */}
-            <button onClick={onFileUpload}>신분증 제출</button>
+            <input type="file" onChange={onFileChange} /> 
         </div>
 
         {/* 메시지 표시 */}
