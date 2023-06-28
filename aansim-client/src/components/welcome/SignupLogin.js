@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
 import './SignupLogin.css';
 
-const SignupLogin = ({score, setScore}) => {
+const SignupLogin = ({score, setScore, onLogin}) => {
   const navigate = useNavigate();
   const [isSignUp, setIsSignUp] = useState(true);
   const [username, setUsername] = useState('');
@@ -51,14 +51,21 @@ const SignupLogin = ({score, setScore}) => {
   };
 
   const handleLogin = () => {
-    axios.post('/api/login', { username, password })
-      .then((response) => {
-        setMessage('로그인에 성공하였습니다.');
-        navigate('profile');
-      })
-      .catch((error) => {
-        setMessage('로그인에 실패하였습니다.');
+        // Simulate a successful login
+    return new Promise((resolve) => {
+      resolve({
+        data: {
+          success: true,
+          username: 'testUser',
+          // Add other necessary data
+        }
       });
+    }).then((response) => {
+      setMessage('로그인에 성공하였습니다.');
+      navigate('/profile');
+    }).catch((error) => {
+      setMessage('로그인에 실패하였습니다.');
+    });
   };
 
   let buttonText = isSignUp ? '회원가입' : '로그인';

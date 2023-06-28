@@ -1,12 +1,15 @@
+.quiz {
+  text-align: center;
+}
 .choices {
     display: flex;
     flex-direction: column;
     gap: 10px;
   }
   .choice-list {
-    position: absolute;
-    left: 43%;
-    top: 32%;
+    position: relative;
+    left: 40%;
+    top: 130px;
   }
   
   .choice-button {
@@ -22,7 +25,7 @@
   }
   
   .quizData {
-    position: absolute;
+    position: relative;
     top: 45%;
     left: 35%;
     font-size: 1.5rem;
@@ -38,4 +41,22 @@
     position: relative;
     top: 10px;
   }
+
+  .quiz_end {
+    position: relative;
+    top: 285px;
+  }
   
+  .btn_signup_login button {
+    background: #ffffff;
+    border: 3px solid #abb0b0;
+    border-radius: 1rem;
+    font-size: 1.3rem;
+    line-height: 1.5;
+    width: 70vw;
+    height: 15vh;
+    color: rgb(12, 12, 12);
+    padding: 10px;
+    position: relative;
+    top: 30px;
+  }

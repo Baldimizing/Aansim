@@ -83,50 +83,55 @@ const quizData = [
     };
 
     const handleQuizEnd = () => {
-        if (score < 0) {
-            navigate("/failure");
-        } 
-        navigate("/login");
+      if (score < 0) {
+        navigate("/failure");
+      } 
+      navigate("/login");
     };
 
-    const currentQuizData = quizData[currentQuiz];
+    let currentQuestion;
+    let choices;
 
-  if (!currentQuizData) {
+    if (currentQuiz < quizData.length) {
+        const currentQuizData = quizData[currentQuiz];
+        currentQuestion = currentQuizData.question;
+        choices = currentQuizData.choices;
+    } else {
+        return (
+            <div className='quiz'>
+                <div className='quiz_end'>
+                    <h2>내 안심 지수 결과는? {score}</h2>
+                    <div className='btn_signup_login'>
+                      <button onClick={handleQuizEnd}>내 안심지수로 로그인</button>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
     return (
-      <div className='quiz'>
-        <div className='quiz_end'>
-          <h2>내 안심 지수 결과는? {score}</h2>
-          <div className='btn_signup_login'>
-            <button onClick={handleQuizEnd}>내 안심지수로 로그인</button>
-          </div>
+        <div className='quiz'>
+            <div className='quiz_header'>
+                <h2>터치로 선택해주세요</h2>
+            </div>
+            <div className='quiz_body'>
+                {currentQuestion}
+            </div>
+            <div className='choice-list'>
+                {
+                    choices && choices.map((choice, index) => (
+                        <button
+                            key={index}
+                            onClick={() => handleChoice(choice)}
+                            className='choice-button'
+                        >
+                            {choice.text}
+                        </button>
+                    ))
+                }
+            </div>
         </div>
-      </div>
     );
-  }
-
-  const { question, choices } = currentQuizData;
-
-  return (
-    <div className='quiz'>
-      <div className='quiz_header'>
-        <h2>터치로 선택해주세요</h2>
-      </div>
-      <div className='quiz_body'>
-        {question}
-      </div>
-      <div className='choice-list'>
-        {choices && choices.map((choice, index) => (
-          <button
-            key={index}
-            onClick={() => handleChoice(choice)}
-            className='choice-button'
-          >
-            {choice.text}
-          </button>
-        ))}
-      </div>
-    </div>
-  );
 }
 
 export default Quiz;

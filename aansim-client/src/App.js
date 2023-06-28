@@ -1,24 +1,35 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import React, { useState } from 'react';
 import './App.css';
 import SignupLogin from './components/welcome/SignupLogin';
 import Welcome from './components/welcome/Welcome';
 import Quiz from './components/welcome/Quiz';
+import Profile from "./components/profile/Profile";
+import MainPage from "./components/mainPage/MainPage";
+import MyPage from "./components/mypage/MyPage";
+import Chatting from "./components/chatting/Chatting";
 
 function App() {
-  const [score, setScore] = useState(0); // 점수 관리용 생성자 추가
+  const [score, setScore] = useState(0); 
   const [isSignUp, setIsSignUp] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  }
 
   return (
-    <div className="app">
-      <Router>
-        <Routes>
-          <Route path="/" element={<Welcome />} />
-          <Route path="/quiz" element={<Quiz onQuizEnd={setScore} />} />
-          <Route path="/login" element={<SignupLogin score={score} setScore={setScore} isSignUp={isSignUp} setIsSignUp={setIsSignUp} />} />
-        </Routes>
-      </Router>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Welcome />} />
+        <Route path="/quiz" element={<Quiz />} />
+        <Route path="/login" element={<SignupLogin onLogin={handleLogin} />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/main" element={<MainPage />} />
+        <Route path="/mypage" element={<MyPage />} />
+        <Route path="/chat" element={<Chatting />} />
+      </Routes>
+    </Router>
   );
 }
 

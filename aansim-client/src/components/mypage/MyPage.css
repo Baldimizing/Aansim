@@ -1,0 +1,13 @@
+/* aansim-client/src/components/mypage/MyPage.css */
+
+.member-card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 10px;
+    cursor: pointer;
+  }
+  
+  .member-card:hover {
+    background-color: #eee;
+  }
+  

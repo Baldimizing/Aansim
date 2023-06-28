@@ -1,0 +1,25 @@
+
+.loading-gif {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 350px;
+    border-radius: 30px;
+  }
+  
+  .loading-gif.active {
+    display: block;
+  }
+
+  .timelog {
+    position: relative;
+  }
+  
+  .id_card {
+    position: relative;
+    top: 100px;
+  }
+
