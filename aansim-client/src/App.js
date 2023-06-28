@@ -5,9 +5,12 @@ import SignupLogin from './components/welcome/SignupLogin';
 import Welcome from './components/welcome/Welcome';
 import Quiz from './components/welcome/Quiz';
 import Profile from "./components/profile/Profile";
+import SalesProfile from './components/profile/SalesProfile';
+import CustomerProfile from './components/profile/CustomerProfile';
 import MainPage from "./components/mainPage/MainPage";
 import MyPage from "./components/mypage/MyPage";
 import Chatting from "./components/chatting/Chatting";
+
 
 function App() {
   const [score, setScore] = useState(0); 
@@ -25,9 +28,11 @@ function App() {
         <Route path="/quiz" element={<Quiz />} />
         <Route path="/login" element={<SignupLogin onLogin={handleLogin} />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/main" element={<MainPage />} />
+        <Route path="/salesProfile/:id" element={<SalesProfile />} />
+        <Route path="/customerProfile/:id" element={<CustomerProfile />} />
+        <Route path="/mainPage" element={<MainPage />} />
         <Route path="/mypage" element={<MyPage />} />
-        <Route path="/chat" element={<Chatting />} />
+        <Route path="/chatting" element={<Chatting />} />
       </Routes>
     </Router>
   );
