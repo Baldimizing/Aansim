@@ -31,8 +31,8 @@ function App() {
         <Route path="/salesProfile/:id" element={<SalesProfile />} />
         <Route path="/customerProfile/:id" element={<CustomerProfile />} />
         <Route path="/mainPage" element={<MainPage />} />
+        <Route path="/chatting/:userId" element={<Chatting />} />
         <Route path="/mypage" element={<MyPage />} />
-        <Route path="/chatting" element={<Chatting />} />
       </Routes>
     </Router>
   );

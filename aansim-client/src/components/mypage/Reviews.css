@@ -1,0 +1,13 @@
+.review-container {
+    display: flex;
+    overflow-x: scroll;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .review-item {
+    min-width: 200px;
+    border: 1px solid black;
+    padding: 10px;
+  }
+  
