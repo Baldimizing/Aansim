@@ -1,5 +1,10 @@
-
-.loading-gif {
+.body {
+    text-align: center;
+    overflow-y: auto; 
+    height: 100vh;
+  }
+  
+  .loading-gif {
     display: none;
     position: absolute;
     left: 50%;
@@ -13,13 +18,25 @@
   .loading-gif.active {
     display: block;
   }
-
+  
   .timelog {
-    position: relative;
+    margin-top: 50px;
   }
   
   .id_card {
-    position: relative;
-    top: 100px;
+    margin-top: 90px;
+    align-items: center;
   }
-
+  
+  .textarea {
+    width: 20px;
+  }
+  
+  .introduction {
+    margin-top: 30px;
+  }
+  
+  .safe_score {
+    margin-top: 20px;
+  }
+  

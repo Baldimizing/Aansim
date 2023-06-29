@@ -13,7 +13,6 @@ function MainPage() {
 
   return (
     <div className="mainPage">
-      {/*... div className='header' */}
       <div className="userList">
         {USERS.map((user) => (
             <div key={user.id} className="userListItem">

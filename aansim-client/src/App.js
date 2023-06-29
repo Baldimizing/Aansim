@@ -13,8 +13,7 @@ import Chatting from "./components/chatting/Chatting";
 
 
 function App() {
-  const [score, setScore] = useState(0); 
-  const [isSignUp, setIsSignUp] = useState(true);
+  
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLogin = () => {

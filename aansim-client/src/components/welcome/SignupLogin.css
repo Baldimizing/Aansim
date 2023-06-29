@@ -1,4 +1,6 @@
 .signup-login-container {
+    position: relative;
+    top: 120px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -31,7 +33,9 @@
   }
   
   .toggle {
+    text-align: center;
     margin-bottom: 2rem;
+
   }
   
   .social-login {
