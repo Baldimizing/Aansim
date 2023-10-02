@@ -3,8 +3,7 @@
 ---
 
 <p align="center"><b>
-  <i> 안전한데 편리한 빌링 서비스 <i>
-  <i> [프로젝트 내용 보러가기]([https://velog.io/@urtimeislimited/안심](https://www.notion.so/Ansym-33ec5d797a404dae9634fb00385e89ea)) <i><b>
+  <p> 안전한데 편리한 빌링 서비스 <i>
 
 
 
