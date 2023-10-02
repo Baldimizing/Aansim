@@ -3,10 +3,11 @@
 ---
 
 <p align="center"><b><i> 
-안전한데 편리한 빌링 서비스 <i><b>
+안전한데 편리한 빌링 서비스 <i>
+  <i> 
+[프로젝트 내용 보러가기]([https://velog.io/@urtimeislimited/안심](https://www.notion.so/Ansym-33ec5d797a404dae9634fb00385e89ea)) <i><<b>
 
-<b><i> 
-[프로젝트 시연 보러가기](https://velog.io/@urtimeislimited/안심) <i><b>
+
 
 ![]([https://velog.velcdn.com/images/urtimeislimited/post/00ce3d39-44ca-430f-9bf6-295591e02343/image.mp4])
 
